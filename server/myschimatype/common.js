@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 
 const mynew = new mongoose.Schema({
-    name:{
-        type:String,
-        require:true
-    },
-    age:{},
+
     
 
 });
+
+const myschimatype = new mongoose.model("mern11a",mynew);
+module.exports = myschimatype
+
+
 
 

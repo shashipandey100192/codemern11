@@ -1,3 +1,4 @@
+'Access-Control-Allow-Origin'
 const express = require("express");
 const apps = express();
 require('dotenv').config();
@@ -10,8 +11,9 @@ require('./database/connection');
 
 
 apps.use(express.json());
+apps.use(cors());
 apps.use(myroute);
-apps.use(cors);
+
 
 
 
