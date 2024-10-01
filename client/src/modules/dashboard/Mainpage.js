@@ -1,10 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import Mymaindata from './Mymaindata';
 import axios from 'axios';
 
 function Mainpage() {
+    const [user,setuser]=useState([])
+
     const getalldata = ()=>{
             axios.get("http://localhost:8900/alldata").then((d)=>{
                 console.log(d.data);
+                setuser(d.data);
             });
             // fetch("http://localhost:8900/alldata").then((d)=>{
             //     return d.json()
@@ -25,7 +29,7 @@ function Mainpage() {
         <div className='col mt-3'>
             <div className="card mb-3 shadow bg-success text-white">
                 <div className="card-body">
-                    <span className="card-title h4">Total:</span>
+                    <span className="card-title h4">Total: {user.length}</span>
                     <span className='h3 c-float'></span>
                 </div>
             </div>
@@ -63,6 +67,14 @@ function Mainpage() {
             </div>
         </div>
     </div>
+<div className='row'>
+    <div className='col-md-12'>
+        <Mymaindata></Mymaindata>
+    </div>
+</div>
+
+
+
 </div>
   )
 }

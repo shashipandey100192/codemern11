@@ -90,3 +90,15 @@
     margin-top: 100px;
 
   }
+
+
+  .css-yrdy0g-MuiDataGrid-columnHeaderRow
+  {
+    background: black !important;
+    color:white !important;
+  }
+  .thf
+  {
+    min-height: 100px;
+    max-height: fit-content !important;
+  }
