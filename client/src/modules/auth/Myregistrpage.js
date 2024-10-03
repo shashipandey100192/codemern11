@@ -1,7 +1,48 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Myregistrpage() {
+
+    const [user,setuser]=useState({
+        email:"",
+        fullname:"",
+        course:"",
+        dob:"",
+        phone:"",
+        pass:""
+    });
+
+    const  updateuseer = (e)=>{
+        console.log(e.target.value);
+        const {name,value} = e.target;
+        setuser((a)=>{
+          return{
+            ...a,
+            [name]:value
+          }
+        })
+    }
+
+
+    const mysubmitdata = async()=>{
+        const { email,fullname,phone,course,dob,pass} = user;
+        const res = await fetch("http://localhost:8900/registoruser", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                email,fullname,phone,course,dob,pass
+            })
+            
+        });
+        const data = await res.json();
+        console.log(data);
+        alert("welcome to regis");
+        
+    }
+
+
+
+
   return (
     <form>
     <div className='container'>
@@ -17,35 +58,35 @@ function Myregistrpage() {
                     <div className='col-md-6'>
                         <div className="mb-3">
                             <label className="form-label">Email address</label>
-                            <input type="email" className="form-control"/>
+                            <input type="email" className="form-control" name='email' value={user.email} onInput={updateuseer}/>
                            
                         </div>
                     </div>
                     <div className='col-md-6'>
                         <div className="mb-3">
                             <label className="form-label">FullName</label>
-                            <input type="text" className="form-control"/>
+                            <input type="text" className="form-control" name='fullname' value={user.fullname} onInput={updateuseer}/>
                            
                         </div>
                     </div>
                     <div className='col-md-6'>
                         <div className="mb-3">
                             <label className="form-label">Phone No</label>
-                            <input type="text" className="form-control"/>
+                            <input type="text" className="form-control" name='phone' value={user.phone} onInput={updateuseer}/>
                             
                         </div>
                     </div>
                     <div className='col-md-6'>
                         <div className="mb-3">
                             <label className="form-label">DOB</label>
-                            <input type="date" className="form-control"/>
+                            <input type="date" className="form-control" name='date' value={user.dob} onInput={updateuseer}/>
                             
                         </div>
                     </div>
                     <div className='col-md-6'>
                         <div className="mb-3">
                             <label className="form-label">Course</label>
-                           <select className='form-select'>
+                           <select className='form-select' name='course' value={user.course} onChange={updateuseer}>
                             <option>mern</option>
                             <option>mean</option>
                             <option>java</option>
@@ -56,13 +97,13 @@ function Myregistrpage() {
                     <div className='col-md-6'>
                         <div className="mb-3">
                             <label className="form-label">Password</label>
-                            <input type="password" className="form-control"/>
+                            <input type="password" className="form-control" name='pass' value={user.pass} onInput={updateuseer}/>
                            
                         </div>
                     </div>
                     <div className='col-12 text-center'>
                         <div className="mb-3">
-                           <button type="submit" className='btn btn-success c-btn'>Registor Now</button>
+                           <button type="button" className='btn btn-success c-btn' onClick={mysubmitdata}>Registor Now</button>
                            <Link to="/">login page</Link>
                         </div>
                     </div>

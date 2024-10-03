@@ -55,7 +55,7 @@ function Mymaindata() {
     <DataGrid
       rows={user}
       columns={columns}
-      getRowId={a => a.sno}
+      getRowId={a => a._id}
       initialState={{ pagination: { paginationModel } }}
       pageSizeOptions={[5, 10,15]}
       checkboxSelection
