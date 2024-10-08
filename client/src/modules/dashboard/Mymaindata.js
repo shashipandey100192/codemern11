@@ -4,28 +4,32 @@ import { DataGrid } from '@mui/x-data-grid';
 import Paper from '@mui/material/Paper';
 
 const columns = [
-    { field: 'sno', headerName: 'U-id', width: 70 },
     { field: '_id', headerName: 'MongoId', width: 200 },
-    { field: 'name', headerName: 'Name', width: 200 },
+    { field: 'fullname', headerName: 'Name', width: 200 },
     {
       field: 'course',
       headerName: 'Course',
       width: 130,
     },
     {
-        field: 'age',
-        headerName: 'Age',
+        field: 'phone',
+        headerName: 'Phone No',
         width: 100,
       },
       {
-        field: 'month',
-        headerName: 'Month',
+        field: 'email',
+        headerName: 'Email Id',
         width: 130,
       },
       {
-        field: 'year',
-        headerName: 'Year',
-        width: 130,
+        field: 'dob',
+        headerName: 'DOB',
+        width: 200,
+      },
+      {
+        field: '',
+        headerName: 'Actions',
+        width: 200,
       }
     
   ];

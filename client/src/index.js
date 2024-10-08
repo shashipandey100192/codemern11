@@ -9,6 +9,7 @@ import Myregistrpage from './modules/auth/Myregistrpage';
 import Mylandingpge from './modules/dashboard/Mylandingpge';
 import Myerrorpage from './modules/shares/Myerrorpage';
 import Mainpage from './modules/dashboard/Mainpage';
+import Userdetailspage from './modules/dashboard/Userdetailspage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -20,6 +21,7 @@ root.render(
           <Route path='registor' element={<Myregistrpage/>}></Route>
           <Route path='dashboard' element={<Mylandingpge/>}>
                 <Route path='' element={<Mainpage/>}></Route>
+                <Route path='details/:id' element={<Userdetailspage/>}></Route>
           
           </Route>
           <Route path='*' element={<Myerrorpage/>}/>

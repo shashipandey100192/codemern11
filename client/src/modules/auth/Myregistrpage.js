@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 function Myregistrpage() {
+    const navigat = useNavigate();
 
     const [user,setuser]=useState({
         email:"",
@@ -26,6 +27,12 @@ function Myregistrpage() {
 
     const mysubmitdata = async()=>{
         const { email,fullname,phone,course,dob,pass} = user;
+        if(user.email==="" || user.fullname==="" || user.pass==="")
+        {
+            alert("your form is invalid");
+        }
+        else
+        {
         const res = await fetch("http://localhost:8900/registoruser", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -37,6 +44,8 @@ function Myregistrpage() {
         const data = await res.json();
         console.log(data);
         alert("welcome to regis");
+        navigat("/");
+    }
         
     }
 
@@ -79,7 +88,7 @@ function Myregistrpage() {
                     <div className='col-md-6'>
                         <div className="mb-3">
                             <label className="form-label">DOB</label>
-                            <input type="date" className="form-control" name='date' value={user.dob} onInput={updateuseer}/>
+                            <input type="date" className="form-control" name='dob' value={user.dob} onInput={updateuseer}/>
                             
                         </div>
                     </div>

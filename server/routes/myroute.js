@@ -26,8 +26,24 @@ apps.post("/registoruser",async(req,res)=>{
     await adduser.save();
     res.status(200).json(adduser);
     console.log(adduser);
-
 });
+
+
+apps.delete("/deleterecord/:id",async(req,res)=>{
+    const {id} = req.params;
+        const del = await myschimatype.findByIdAndDelete({"_id":id});
+        console.log(del);
+        res.status(256).json(del);
+});
+
+apps.get("/singleuser/:id", async(req,res)=>{
+    const {id} = req.params;
+    const users = await myschimatype.findOne({_id:id});
+        res.status(288).json(users);
+
+
+})
+
 
 
 
