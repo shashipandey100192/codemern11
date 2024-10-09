@@ -40,9 +40,16 @@ apps.get("/singleuser/:id", async(req,res)=>{
     const {id} = req.params;
     const users = await myschimatype.findOne({_id:id});
         res.status(288).json(users);
+});
 
 
-})
+apps.patch("/updateuser/:id", async(req,res)=>{
+    const {id} = req.params;
+    const recordupdate = await myschimatype.findByIdAndUpdate(id,req.body,{new:true});
+    console.log(recordupdate);
+    res.status(201).json(recordupdate);
+});
+
 
 
 

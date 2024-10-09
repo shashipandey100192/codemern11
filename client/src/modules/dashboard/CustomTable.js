@@ -95,7 +95,7 @@ const deletedata = async(id)=>
                             <td>{d.dob}</td>
                             <td>{d.course}</td>
                             <td className='text-end'>
-                                <Link to="" className="badge text-bg-primary">Edit</Link>
+                                <Link to={`edituser/`+d._id} className="badge text-bg-primary">Edit</Link>
                                 <button  className="btn badge text-bg-danger" onClick={()=>deletedata(d._id)}>Del</button>
                                 <Link to={'details/'+d._id} className="badge text-bg-info" >View</Link>
                             </td>
