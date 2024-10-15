@@ -9,7 +9,7 @@ function Userdetailspage() {
     const [userdetail,userset]=useState({})
 
 const singleuser= ()=>{
-    axios.get(`http://localhost:8900/singleuser/${id}`).then((d)=>{
+    axios.get(`https://codemern11.onrender.com/singleuser/${id}`).then((d)=>{
         console.log(d);
         userset(d.data);
     })

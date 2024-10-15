@@ -42,7 +42,7 @@ function Mymaindata() {
     const [user,setuser]=useState([])
 
     const getalldata = ()=>{
-            axios.get("http://localhost:8900/alldata").then((d)=>{
+            axios.get("https://codemern11.onrender.com/alldata").then((d)=>{
                 console.log(d.data);
                 setuser(d.data);
             });

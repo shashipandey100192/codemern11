@@ -5,7 +5,7 @@ import axios from 'axios';
 function CustomTable() {
     const [user, setuser] = useState([])
     const getalldata = () => {
-        axios.get("http://localhost:8900/alldata").then((d) => {
+        axios.get("https://codemern11.onrender.com/alldata").then((d) => {
             console.log(d.data);
             setuser(d.data);
         });
@@ -18,7 +18,7 @@ function CustomTable() {
 
 const deletedata = async(id)=>
 {
-    await axios.delete(`http://localhost:8900/deleterecord/${id}`).then((d)=>{
+    await axios.delete(`https://codemern11.onrender.com/deleterecord/${id}`).then((d)=>{
         console.log(d);
         getalldata();
     })

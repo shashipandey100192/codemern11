@@ -33,7 +33,7 @@ function Myregistrpage() {
         }
         else
         {
-        const res = await fetch("http://localhost:8900/registoruser", {
+        const res = await fetch("https://codemern11.onrender.com/registoruser", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

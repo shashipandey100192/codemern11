@@ -26,7 +26,7 @@ function Usereditpage() {
     }
 
     const edituser = ()=>{
-        axios.get(`http://localhost:8900/singleuser/${id}`).then((d)=>{
+        axios.get(`https://codemern11.onrender.com/singleuser/${id}`).then((d)=>{
             console.log(d);
            setuser(d.data);
          });
@@ -38,7 +38,7 @@ useEffect(()=>{
 
 const changedetails = async()=>{
     const { email,fullname,phone,course,dob,pass} = user;
-    const res = await fetch(`http://localhost:8900/updateuser/${id}`, {
+    const res = await fetch(`https://codemern11.onrender.com/updateuser/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
