@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react'
 import axios from 'axios';
 import { DataGrid } from '@mui/x-data-grid';
 import Paper from '@mui/material/Paper';
+import Myapi from '../shares/Myapi';
 
 const columns = [
     { field: '_id', headerName: 'MongoId', width: 200 },
@@ -42,7 +43,7 @@ function Mymaindata() {
     const [user,setuser]=useState([])
 
     const getalldata = ()=>{
-            axios.get("https://codemern11.onrender.com/alldata").then((d)=>{
+            axios.get(`${Myapi}/alldata`).then((d)=>{
                 console.log(d.data);
                 setuser(d.data);
             });

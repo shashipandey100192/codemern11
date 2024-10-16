@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Myapi from '../shares/Myapi';
+
 
 function Myloginpage() {
     const navigat =useNavigate();
@@ -27,7 +29,7 @@ function Myloginpage() {
         }
         else
         {
-            const datares = await fetch("https://codemern11.onrender.com/login", {
+            const datares = await fetch(`${Myapi}/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -35,7 +37,7 @@ function Myloginpage() {
                 })
             });
             const resdata = await datares.json();
-            console.log(resdata);
+            // console.log(resdata);
             if(resdata.status===220)
             {
                 alert("welcome to");

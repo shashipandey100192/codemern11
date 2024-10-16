@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import Myapi from '../shares/Myapi';
 
 function Usereditpage() {
     const mynavigt = useNavigate();
@@ -15,7 +16,7 @@ function Usereditpage() {
     });
 
     const  updateuseer = (e)=>{
-        console.log(e.target.value);
+        // console.log(e.target.value);
         const {name,value} = e.target;
         setuser((a)=>{
           return{
@@ -26,8 +27,8 @@ function Usereditpage() {
     }
 
     const edituser = ()=>{
-        axios.get(`https://codemern11.onrender.com/singleuser/${id}`).then((d)=>{
-            console.log(d);
+        axios.get(`${Myapi}/singleuser/${id}`).then((d)=>{
+            // console.log(d);
            setuser(d.data);
          });
         }
@@ -38,7 +39,7 @@ useEffect(()=>{
 
 const changedetails = async()=>{
     const { email,fullname,phone,course,dob,pass} = user;
-    const res = await fetch(`https://codemern11.onrender.com/updateuser/${id}`, {
+    const res = await fetch(`${Myapi}/updateuser/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -47,7 +48,7 @@ const changedetails = async()=>{
         
     });
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     alert("update record");
     mynavigt("/dashboard");
     

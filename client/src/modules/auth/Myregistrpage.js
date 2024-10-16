@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
+import Myapi from '../shares/Myapi';
 
 function Myregistrpage() {
     const navigat = useNavigate();
@@ -33,7 +34,7 @@ function Myregistrpage() {
         }
         else
         {
-        const res = await fetch("https://codemern11.onrender.com/registoruser", {
+        const res = await fetch(`${Myapi}/registoruser`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -42,7 +43,7 @@ function Myregistrpage() {
             
         });
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         alert("welcome to regis");
         navigat("/");
     }

@@ -25,14 +25,14 @@ apps.post("/registoruser", async (req, res) => {
     });
     await adduser.save();
     res.status(200).json(adduser);
-    console.log(adduser);
+    // console.log(adduser);
 });
 
 
 apps.delete("/deleterecord/:id", async (req, res) => {
     const { id } = req.params;
     const del = await myschimatype.findByIdAndDelete({ "_id": id });
-    console.log(del);
+    // console.log(del);
     res.status(256).json(del);
 });
 
@@ -59,7 +59,7 @@ apps.post("/login", async (req, res) => {
     }
     else {
         const logindetails = await myschimatype.findOne({ email: email });
-        console.log(logindetails);
+        // console.log(logindetails);
         if (logindetails) {
             if (logindetails.email === email && logindetails.pass === pass) {
                 res.status(200).json({ message: "welcome", status: 220 });
