@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
+import 'react-toastify/dist/ReactToastify.css';
 import "./css/style.css";
 import {Routes, Route,BrowserRouter} from "react-router-dom"
 import Myloginpage from './modules/auth/Myloginpage';

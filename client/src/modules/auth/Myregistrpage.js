@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Myapi from '../shares/Myapi';
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa6";
+import { ToastContainer, toast } from 'react-toastify';
 
 function Myregistrpage() {
     const navigat = useNavigate();
@@ -44,10 +47,27 @@ function Myregistrpage() {
         });
         const data = await res.json();
         // console.log(data);
-        alert("welcome to regis");
-        navigat("/");
+        // alert("welcome to regis");
+        // navigat("/");
+        toast.success("Successfull User Registor",{theme: "dark"});
+                setTimeout(()=>{
+                    navigat('/');
+                },2000)
     }
         
+    }
+
+    const [passshow, setpassshow]=useState('password');
+    const showhide = ()=>{
+        if(passshow==="password")
+        {
+            setpassshow('text');
+        }
+        else
+        {
+            setpassshow('password');
+        }
+
     }
 
 
@@ -60,6 +80,7 @@ function Myregistrpage() {
         <div className='col-md-8 bg-warning p-3 rounded shadow'>
             <div className='container-fluid'>
                 <div className='row'>
+                <ToastContainer />
                 <div className='col-12 text-center'>
                         <div className="mb-3">
                           <p className='h2'>Welcome to Registor Page</p>
@@ -106,15 +127,16 @@ function Myregistrpage() {
                     </div>
                     <div className='col-md-6'>
                         <div className="mb-3">
-                            <label className="form-label">Password</label>
-                            <input type="password" className="form-control" name='pass' value={user.pass} onInput={updateuseer}/>
+                            <label className="form-label tblock">Password</label>
+                            <input type={passshow} className="form-control cpa" name='pass' value={user.pass} onInput={updateuseer}/>
+                            <button type="button" className="btn showhide bg-primary text-white ms-2" onClick={showhide}> {passshow==="password" ? <FaEye/> : <FaEyeSlash/>}</button>
                            
                         </div>
                     </div>
                     <div className='col-12 text-center'>
                         <div className="mb-3">
                            <button type="button" className='btn btn-success c-btn' onClick={mysubmitdata}>Registor Now</button>
-                           <Link to="/">login page</Link>
+                           <Link to="/" className='btn c-btn ms-3 hd1'>login page</Link>
                         </div>
                     </div>
                 </div>

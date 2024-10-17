@@ -18,6 +18,7 @@
     background: linear-gradient(45deg, #2bd231, #001f03);
     border: none;
     padding: 8px 50px;
+    color:white !important;
 }
 
   
@@ -101,4 +102,30 @@
   {
     min-height: 100px;
     max-height: fit-content !important;
+  }
+  .tblock
+  {
+    display:block;
+  }
+  .cpa
+  {
+    width: 85%;
+    display: inline-block;
+  }
+  .showhide
+  {
+    display: inline-block;
+    width: 42px;
+
+  }
+
+
+
+
+  @media (max-width:500px)
+  {
+    .hd1
+    {
+      display: none;
+    }
   }

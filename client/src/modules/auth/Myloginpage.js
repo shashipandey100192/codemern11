@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Myapi from '../shares/Myapi';
+import { RiLockPasswordFill } from "react-icons/ri";
+import { MdEmail } from "react-icons/md";
+import { ToastContainer, toast } from 'react-toastify';
 
 
 function Myloginpage() {
@@ -11,7 +14,7 @@ function Myloginpage() {
     });
 
     const loginuseer = (e)=>{
-        console.log(e.target.value);
+        // console.log(e.target.value);
         const {name,value} = e.target;
         setlogin((a)=>{
           return{
@@ -40,8 +43,13 @@ function Myloginpage() {
             // console.log(resdata);
             if(resdata.status===220)
             {
-                alert("welcome to");
-                navigat('/dashboard');
+                // alert("welcome to");
+                toast.success("Welcome to Login ",{theme: "dark"});
+                setTimeout(()=>{
+                    navigat('/dashboard');
+                },2000)
+                
+                
             }
 
             if(resdata.status===620)
@@ -73,22 +81,23 @@ function Myloginpage() {
                     </div>
                     <div className='col-12'>
                         <div className="mb-3">
-                            <label className="form-label">Email address</label>
+                            <label className="form-label"> <MdEmail/> Email address</label>
                             <input type="email" className="form-control" name='email' value={login.email} onInput={loginuseer}/>
                         </div>
                     </div>
                     <div className='col-12'>
                         <div className="mb-3">
-                            <label className="form-label">Password</label>
+                            <label className="form-label"><RiLockPasswordFill/> Password</label>
                             <input type="password" className="form-control" name='pass' value={login.pass} onInput={loginuseer}/>
                         </div>
                     </div>
                     <div className='col-12 text-center'>
                         <div className="mb-3">
-                           <button className='btn btn-success c-btn' type="button" onClick={userlogin}>login</button>
-                           <Link to="registor" className="btn">Registor Now</Link>
+                           <button className='btn btn-success c-btn' type="button" onClick={userlogin}>Login</button>
+                           <Link to="registor" className="btn c-btn ms-3 ">Registor Now</Link>
                            {/* <Link to="dashboard" className="btn">dashboard</Link> */}
                         </div>
+                        <ToastContainer />
                     </div>
                 </div>
             </div>

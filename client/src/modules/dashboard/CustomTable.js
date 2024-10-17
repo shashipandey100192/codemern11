@@ -88,8 +88,8 @@ const deletedata = async(id)=>
             <tbody>
                 {user.map((d) => {
                     return (
-                        <tr>
-                            <th scope="row">{d._id}</th>
+                        <tr key={d._id}>
+                            <th scope="row" >{d._id}</th>
                             <td>{d.fullname}</td>
                             <td>{d.email}</td>
                             <td>{d.phone}</td>
