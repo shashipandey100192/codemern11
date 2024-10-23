@@ -12,11 +12,14 @@ import Myerrorpage from './modules/shares/Myerrorpage';
 import Mainpage from './modules/dashboard/Mainpage';
 import Userdetailspage from './modules/dashboard/Userdetailspage';
 import Usereditpage from './modules/dashboard/Usereditpage';
+import { store } from './modules/reduxpage/Mystore';
+import { Provider } from 'react-redux'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
+     <Provider store={store}>
     <BrowserRouter>
       <Routes>
           <Route path='' element={<Myloginpage/>}></Route>
@@ -25,13 +28,11 @@ root.render(
                 <Route path='' element={<Mainpage/>}></Route>
                 <Route path='details/:id' element={<Userdetailspage/>}></Route>
                 <Route path='edituser/:id' element={<Usereditpage/>}></Route>
-          
           </Route>
           <Route path='*' element={<Myerrorpage/>}/>
-
       </Routes>
     </BrowserRouter>
-
+    </Provider>
 
   </React.StrictMode>
 );

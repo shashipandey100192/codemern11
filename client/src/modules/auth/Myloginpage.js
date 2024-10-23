@@ -4,10 +4,17 @@ import Myapi from '../shares/Myapi';
 import { RiLockPasswordFill } from "react-icons/ri";
 import { MdEmail } from "react-icons/md";
 import { ToastContainer, toast } from 'react-toastify';
+import { useSelector, useDispatch } from 'react-redux';
+import { increment } from '../reduxpage/Myactions';
 
 
 function Myloginpage() {
     const navigat =useNavigate();
+    const count = useSelector((state) => state.counter.username)
+    const dispatch = useDispatch()
+
+
+
     const [login,setlogin]=useState({
         email:"",
         pass:""
@@ -43,6 +50,7 @@ function Myloginpage() {
             // console.log(resdata);
             if(resdata.status===220)
             {
+                console.log(resdata);
                 // alert("welcome to");
                 toast.success("Welcome to Login ",{theme: "dark"});
                 setTimeout(()=>{
@@ -96,6 +104,7 @@ function Myloginpage() {
                            <button className='btn btn-success c-btn' type="button" onClick={userlogin}>Login</button>
                            <Link to="registor" className="btn c-btn ms-3 ">Registor Now</Link>
                            {/* <Link to="dashboard" className="btn">dashboard</Link> */}
+                           <button type='button' onClick={() => dispatch(increment())}> inc {count}</button>
                         </div>
                         <ToastContainer />
                     </div>
